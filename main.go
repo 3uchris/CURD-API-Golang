@@ -1,9 +1,9 @@
 package main
 
-import(
-	"fmt"
+import( 
+	"fmt"            //name of a package
 	"log"
-	"encoding/json"
+	"encoding/json"  //path of the package
 	"math/rand"
 	"net/http"
 	"strconv"
@@ -26,10 +26,16 @@ type Director struct{
 var movie []Movie
 
 func main(){
-	r := mux.NewRouter()
+	r := mux.NewRouter()  //NewRouter is a library inside the Gorilla/mux
 
 	r.HandleFunc("/movies", getMovies).Methods("GET")
 	r.HandleFunc("/movies/{id}", getMovie).Method("GET")
+	r.HandleFunc("/movies/", createMovie).Method("POST")
+	r.HandleFunc("/movies/{id}", updateMovie).Method("PUT")
+	r.HandleFunc("/movies/{id}", deleteMovie).Method("DELETE")
+	
+	fmt.printf("Starting server at port 8000\n")
+	log.Fatal(http.ListenAndServe(":8000",r))
 	
 
 }
