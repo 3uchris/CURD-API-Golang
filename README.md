@@ -17,5 +17,6 @@ In this project, our goal is to build a RESTful API that performs simple CURD op
 
     Here is the external packages/libararies we use in this project: 
         1. gorilla/mux:= For creating routes and HTTP handlers for our endpoints
-        2. jinzhu/gorm:= An ORM tool for MySQL.
-        3. go-sql-driver/mysql:= MYSQL driver.
+       
+
+<img width="759" alt="Screen Shot 2022-07-22 at 13 45 11" src="https://user-images.githubusercontent.com/77694377/180516389-4fd3baa7-bebc-47b5-9874-20df771bd55f.png">
