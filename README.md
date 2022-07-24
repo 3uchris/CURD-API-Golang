@@ -19,3 +19,4 @@ In this project, our goal is to build a RESTful API that performs simple CURD op
         1. gorilla/mux:= For creating routes and HTTP handlers for our endpoints
         2. jinzhu/gorm:= An ORM tool for MySQL.
         3. go-sql-driver/mysql:= MYSQL driver.
+
