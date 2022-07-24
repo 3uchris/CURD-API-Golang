@@ -15,7 +15,7 @@ type Movie struct{
 	ID string 'json:"id"'
 	Isbn string 'json:"isbn"'
 	Title string 'json:"title"'
-	Director *Director 'json::"director"' //this is a pointer
+	Director *Director 'json:"director"' //this is a pointer
 }
 
 type Director struct{
@@ -61,6 +61,27 @@ func createMovie(w http.ResponseWriter, r *http.Request){
 	movie.ID = strconv.Itoa(rand.Intn(100000000)) //format it into string
 	movies = append(movies, movie)
 	json.NewEncode(w).Encode(movie)
+}
+
+func updateMovie(w http.ResponseWrite, r *http.Request){
+	//set json content type
+	w.Header().set("Content-Type", "application/json")
+	//params
+	params := mux.Vars(r)
+	//loop over the movies, range
+	//delete the movie with the id that you've sent 
+	//add a new movie that we sent in the body of postman
+	for index, item := range movies{
+		if item.ID == params["id"]{
+			movies = append(movies[:index], movies[index+1:]...)
+			var movie Movie
+			_ = json.NewEncoder(r.Body).Decode(&movie)
+			movie.ID = params["id"]
+			movies = append(movies, movie)
+			json.NewEncoder(w).Encode(movie)
+			return
+		}
+	}
 }
 
 func main(){
